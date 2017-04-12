@@ -285,6 +285,12 @@ type Parent struct {
 // Time represents the Time definition of JIRA as a time.Time of go
 type Time time.Time
 
+// custom time
+type JiraTime struct {
+	Time   Time
+	GoTime time.Time
+}
+
 // Wrapper struct for search result
 type transitionResult struct {
 	Transitions []Transition `json:"transitions" structs:"transitions"`
@@ -323,6 +329,17 @@ func (t *Time) UnmarshalJSON(b []byte) error {
 	}
 	*t = Time(ti)
 	fmt.Println(ti, "_---")
+	return nil
+}
+
+func (t *JiraTime) UnmarshalJSON(b []byte) error {
+	ti, err := time.Parse(`"2006-01-02T15:04:05.999-0700"`, string(b))
+	if err != nil {
+		fmt.Println("ERROR: ", err)
+		return err
+	}
+	*t.Time = Time(ti)
+	t.GoTime = ti
 	return nil
 }
 
