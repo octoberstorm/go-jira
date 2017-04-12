@@ -315,7 +315,7 @@ type TransitionPayload struct {
 // UnmarshalJSON will transform the JIRA time into a time.Time
 // during the transformation of the JIRA JSON response
 func (t *Time) UnmarshalJSON(b []byte) error {
-	ti, err := time.Parse("\"2006-01-02T15:04:05.999-0700\"", string(b))
+	ti, err := time.Parse("2006-01-02T15:04:05.999-0700", string(b))
 	if err != nil {
 		return err
 	}
