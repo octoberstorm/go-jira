@@ -338,7 +338,7 @@ func (t *JiraTime) UnmarshalJSON(b []byte) error {
 		fmt.Println("ERROR: ", err)
 		return err
 	}
-	*t.Time = Time(ti)
+	t.Time = Time(ti)
 	t.GoTime = ti
 	return nil
 }
@@ -355,17 +355,17 @@ type Worklog struct {
 
 // WorklogRecord represents one entry of a Worklog
 type WorklogRecord struct {
-	Self             string    `json:"self" structs:"self"`
-	Author           User      `json:"author" structs:"author"`
-	UpdateAuthor     User      `json:"updateAuthor" structs:"updateAuthor"`
-	Comment          string    `json:"comment" structs:"comment"`
-	Created          time.Time `json:"created" structs:"created"`
-	Updated          Time      `json:"updated" structs:"updated"`
-	Started          Time      `json:"started" structs:"started"`
-	TimeSpent        string    `json:"timeSpent" structs:"timeSpent"`
-	TimeSpentSeconds int       `json:"timeSpentSeconds" structs:"timeSpentSeconds"`
-	ID               string    `json:"id" structs:"id"`
-	IssueID          string    `json:"issueId" structs:"issueId"`
+	Self             string   `json:"self" structs:"self"`
+	Author           User     `json:"author" structs:"author"`
+	UpdateAuthor     User     `json:"updateAuthor" structs:"updateAuthor"`
+	Comment          string   `json:"comment" structs:"comment"`
+	Created          JiraTime `json:"created" structs:"created"`
+	Updated          Time     `json:"updated" structs:"updated"`
+	Started          Time     `json:"started" structs:"started"`
+	TimeSpent        string   `json:"timeSpent" structs:"timeSpent"`
+	TimeSpentSeconds int      `json:"timeSpentSeconds" structs:"timeSpentSeconds"`
+	ID               string   `json:"id" structs:"id"`
+	IssueID          string   `json:"issueId" structs:"issueId"`
 }
 
 // TimeTracking represents the timetracking fields of a JIRA issue.
