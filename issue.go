@@ -316,7 +316,7 @@ type TransitionPayload struct {
 // during the transformation of the JIRA JSON response
 func (t *Time) UnmarshalJSON(b []byte) error {
 	fmt.Println(string(b), "++++")
-	ti, err := time.Parse("2006-01-02T15:04:05.999-0700", string(b))
+	ti, err := time.Parse("'2006-01-02T15:04:05.999-0700'", string(b))
 	if err != nil {
 		fmt.Println("ERROR: ", err)
 		return err
