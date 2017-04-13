@@ -360,8 +360,8 @@ type WorklogRecord struct {
 	UpdateAuthor     User     `json:"updateAuthor" structs:"updateAuthor"`
 	Comment          string   `json:"comment" structs:"comment"`
 	Created          JiraTime `json:"created" structs:"created"`
-	Updated          Time     `json:"updated" structs:"updated"`
-	Started          Time     `json:"started" structs:"started"`
+	Updated          JiraTime `json:"updated" structs:"updated"`
+	Started          JiraTime `json:"started" structs:"started"`
 	TimeSpent        string   `json:"timeSpent" structs:"timeSpent"`
 	TimeSpentSeconds int      `json:"timeSpentSeconds" structs:"timeSpentSeconds"`
 	ID               string   `json:"id" structs:"id"`
